@@ -12,6 +12,7 @@ import {
   headValue,
   isDivider,
   prevSibling,
+  rootedContextOf,
   unroot,
 } from '../util.js'
 
@@ -19,7 +20,7 @@ export const cursorUp = ({ target }) => dispatch => {
   const { cursor } = store.getState()
   const thoughtsRanked = cursor || RANKED_ROOT
   const { value, rank } = head(thoughtsRanked)
-  const context = contextOf(thoughtsRanked)
+  const context = rootedContextOf(thoughtsRanked)
 
   // TODO: Ignore hidden thoughts
   const thoughtBefore = prevSibling(value, context, rank)
